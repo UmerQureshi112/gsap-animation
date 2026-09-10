@@ -12,8 +12,10 @@ let pinLeft = document.querySelector(".pin-left");
 let pinItem = document.querySelectorAll(".pin-item");
 let bossTopH1 = document.querySelectorAll(".boss-top h1");
 let bossTopPera = document.querySelectorAll(".boss-top p");
+let bossProjects = document.querySelectorAll(".boss-projects");
 let bossImage = document.querySelectorAll(".boss-image");
 let finalButton = document.querySelectorAll("#finalButton");
+let horizontalWrapper = document.querySelectorAll(".horizontal-wrapper");
 
 function yAxisScroll(Ypage) {
   gsap.from(Ypage, {
@@ -41,14 +43,14 @@ function xAxisScroll(Xpage) {
   gsap.from(Xpage,{
     x: -30,
     opacity: 0,
-    duraion: 0.6,
+    duration: 0.6,
     delay: 0.8,
     scrollTrigger:{
       trigger: Xpage,
       scroller: "body",
       start: "top 40%", 
       end: "bottom 40%",
-      scrub: 0.9
+      // scrub: 0.9
     }
   })
 }
@@ -93,7 +95,7 @@ function scrollerBodyTrigger() {
       trigger: pinItem,
       scroller: "body",
       start: "top 50%",
-      scrub: 0.9
+      // scrub: 0.9
     }
   })
 
@@ -136,22 +138,41 @@ function mainContainer() {
   })
 }
 
-function projectCards() {
-  gsap.from(projectCard, {
-    y: 30,
-    opacity: 0,
-    stagger: 0.7,
-    duration: 0.6,
-    scrollTrigger: {
-      trigger: projectCard,
-      scroller: "body",
-      endTrigger: ".level7",
-      scrub: 0.9
-    },
-    x: -1200
-  })
-}
-
 scrollerBodyTrigger();
 mainContainer();
-projectCards()
+
+function firstCard() {
+gsap.registerPlugin(ScrollTrigger);
+gsap.to(horizontalWrapper, {
+  x: -800,
+  ease:"power3.out",
+  scrollTrigger: {
+    trigger: horizontalWrapper,
+    scroller: "body",
+    start: "top 15%",
+    scrub: 0.8,
+    pin: true,
+  }
+});
+}
+
+firstCard()
+
+function secondCard() {
+gsap.registerPlugin(ScrollTrigger);
+gsap.to(bossProjects, {
+  x: -250,
+  ease:"power3.out",
+  scrollTrigger: {
+    trigger: bossProjects,
+    scroller: "body",
+    start: "top 15%",
+    scrub: 0.8,
+    pin: true,
+  }
+});
+}
+
+secondCard()
+
+
