@@ -144,7 +144,12 @@ mainContainer();
 function firstCard() {
 gsap.registerPlugin(ScrollTrigger);
 gsap.to(horizontalWrapper, {
-  x: -800,
+  x: () => {
+      if (window.innerWidth <= 768) {
+        return -1000; 
+      }
+      return -800; 
+    },
   ease:"power3.out",
   scrollTrigger: {
     trigger: horizontalWrapper,
@@ -161,7 +166,12 @@ firstCard()
 function secondCard() {
 gsap.registerPlugin(ScrollTrigger);
 gsap.to(bossProjects, {
-  x: -250,
+ x:()=>{
+  if (window.innerWidth <= 768) {
+    return -700
+  }
+  return -250
+ },
   ease:"power3.out",
   scrollTrigger: {
     trigger: bossProjects,
